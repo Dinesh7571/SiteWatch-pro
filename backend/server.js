@@ -21,6 +21,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Routes
+app.get('/', (req, res) => {
+    res.send('SiteWatch Pro API');
+});
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/monitors', require('./routes/monitorRoutes'));
 app.use('/api/analytics', require('./routes/analyticsRoutes'));
