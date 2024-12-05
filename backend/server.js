@@ -4,7 +4,7 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 const { errorHandler, notFound } = require('./middleware/errorMiddleware');
 const MonitorHistory = require('./models/MonitorHistory');
-
+const { startMonitoring } = require('./services/monitoringService');
 // Load env vars
 dotenv.config();
 
@@ -52,7 +52,8 @@ const startServer = async () => {
         app.listen(PORT, () => {
             console.log(`Server running on port ${PORT}`);
             // Start monitoring service after server is running
-            require('./services/monitoringService').startMonitoring();
+           
+            startMonitoring();
         });
     } catch (error) {
         console.error('Failed to start server:', error);

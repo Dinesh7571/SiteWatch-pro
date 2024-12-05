@@ -87,6 +87,8 @@ const startMonitoring = async () => {
     } catch (error) {
         console.error('Failed to start monitoring services:', error);
     }
+    
+
 };
 
 module.exports = { startMonitoring }; 

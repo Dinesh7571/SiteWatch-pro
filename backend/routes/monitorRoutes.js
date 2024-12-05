@@ -14,11 +14,11 @@ router.use(protect);
 
 router.route('/')
     .get(getMonitors)
-    .post(createMonitor);
+    .post( createMonitor);
 
 router.route('/:id')
     .get(getMonitor)
-    .put(updateMonitor)
+    .put( updateMonitor)
     .delete(deleteMonitor);
 
 router.get('/:id/history', getMonitorHistory);

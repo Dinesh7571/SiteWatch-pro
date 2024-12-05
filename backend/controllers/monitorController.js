@@ -1,7 +1,7 @@
 const Monitor = require('../models/Monitor');
 const MonitorHistory = require('../models/MonitorHistory');
 const moment = require('moment');
-
+const { startMonitoring } = require('../services/monitoringService');
 // @desc    Get all monitors
 // @route   GET /api/monitors
 // @access  Private
@@ -52,6 +52,7 @@ exports.createMonitor = async (req, res) => {
         };
 
         const monitor = await Monitor.create(monitorData);
+        startMonitoring();
         res.status(201).json(monitor);
     } catch (error) {
         console.error('Create monitor error:', error);
@@ -86,7 +87,7 @@ exports.updateMonitor = async (req, res) => {
             updateData,
             { new: true }
         );
-
+        startMonitoring();
         res.status(200).json(updatedMonitor);
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -110,7 +111,7 @@ exports.deleteMonitor = async (req, res) => {
         await Monitor.findByIdAndDelete(monitor._id);
 
         await MonitorHistory.deleteMany({ monitorId: monitor._id });
-
+        startMonitoring();
         res.status(200).json({ 
             success: true,
             message: 'Monitor deleted successfully' 
