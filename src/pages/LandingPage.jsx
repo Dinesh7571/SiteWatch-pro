@@ -12,8 +12,7 @@ import {
 } from '@heroicons/react/24/outline'
 import DemoMonitor from '../assets/DemoMonitor.png'
 import { motion } from 'framer-motion'
-import AnimatedBackground from '../components/common/AnimatedBackground';
-import GlassmorphicShapes from '../components/common/GlassmorphicShapes';
+
 
 const LandingPage = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -129,8 +128,8 @@ const LandingPage = () => {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-      <AnimatedBackground />
-      <GlassmorphicShapes />
+      
+     
 
       <div 
         className="fixed inset-0 pointer-events-none opacity-[0.015]" 
@@ -186,9 +185,7 @@ const LandingPage = () => {
         {/* Demo Image Section */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+             
               className="relative group"
           >
               {/* Gradient Glow Effect */}
